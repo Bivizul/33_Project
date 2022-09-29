@@ -1,6 +1,11 @@
+import org.jetbrains.compose.compose
+
 plugins {
     kotlin("multiplatform")
+    kotlin("plugin.serialization")
     id("com.android.library")
+    id("org.jetbrains.compose")
+    id("kotlin-parcelize")
 }
 
 kotlin {
@@ -17,13 +22,41 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting{
+            dependencies{
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material)
+                implementation(compose.ui)
+                implementation(Deps.Kmp.Ktor.core)
+                implementation(Deps.Kmp.Ktor.logging)
+                implementation(Deps.Kmp.Ktor.negotiation)
+                implementation(Deps.Kmp.Ktor.json)
+                implementation(Deps.Kmp.Ktor.cio)
+                implementation(Deps.Kmp.Util.onesignal)
+                implementation(Deps.JetBrains.KotlinCoroutines.core)
+                implementation(Deps.JetBrains.Serialization.serializationJson)
+                implementation(Deps.ArkIvanov.Decompose.decompose)
+                implementation(Deps.ArkIvanov.Decompose.extensionsComposeJetbrains)
+                implementation(Deps.ArkIvanov.Essenty.lifecycle)
+//                implementation ("com.google.accompanist:accompanist-systemuicontroller:0.26.3-beta")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting{
+            dependencies{
+                implementation(Deps.AndroidX.appCompat)
+                implementation(Deps.AndroidX.core_ktx)
+                implementation(compose.material)
+                implementation(Deps.ArkIvanov.Decompose.decompose)
+                implementation(Deps.ArkIvanov.Decompose.extensionsAndroid)
+                implementation (Deps.Kmp.Util.coil)
+            }
+        }
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -48,9 +81,9 @@ kotlin {
 
 android {
     namespace = "aaa.bivizul.a33project"
-    compileSdk = 32
+    compileSdk = Deps.Versions.compileSdk
     defaultConfig {
-        minSdk = 24
-        targetSdk = 32
+        minSdk = Deps.Versions.minSdk
+        targetSdk = Deps.Versions.targetSdk
     }
 }

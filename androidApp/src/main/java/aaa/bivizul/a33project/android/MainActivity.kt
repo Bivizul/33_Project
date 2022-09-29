@@ -13,10 +13,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import aaa.bivizul.a33project.Greeting
 
 @Composable
 fun MyApplicationTheme(
@@ -66,22 +64,13 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting(Greeting().greeting())
+
+
+
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(text: String) {
-    Text(text = text)
-}
 
-@Preview
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        Greeting("Hello, Android!")
-    }
-}

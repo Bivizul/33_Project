@@ -1,3 +1,5 @@
+import org.jetbrains.compose.compose
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -5,11 +7,11 @@ plugins {
 
 android {
     namespace = "aaa.bivizul.a33project.android"
-    compileSdk = 32
+    compileSdk = Deps.Versions.compileSdk
     defaultConfig {
         applicationId = "aaa.bivizul.a33project.android"
-        minSdk = 24
-        targetSdk = 32
+        minSdk = Deps.Versions.minSdk
+        targetSdk = Deps.Versions.targetSdk
         versionCode = 1
         versionName = "1.0"
     }
@@ -17,7 +19,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.0"
+        kotlinCompilerExtensionVersion = Deps.Versions.composeCompiler
     }
     packagingOptions {
         resources {
@@ -25,18 +27,39 @@ android {
         }
     }
     buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
+        getByName("debug") {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                file("proguard-rules.pro")
+            )
         }
+        getByName("release") {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                file("proguard-rules.pro")
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }
 
 dependencies {
     implementation(project(":shared"))
-    implementation("androidx.compose.ui:ui:1.2.1")
-    implementation("androidx.compose.ui:ui-tooling:1.2.1")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.2.1")
-    implementation("androidx.compose.foundation:foundation:1.2.1")
-    implementation("androidx.compose.material:material:1.2.1")
-    implementation("androidx.activity:activity-compose:1.5.1")
+    implementation(Deps.AndroidX.appCompat)
+    implementation(Deps.AndroidX.activityCompose)
+    implementation(compose.ui)
+    implementation(compose.material)
+    implementation(compose.foundation)
+    implementation(Deps.JetBrains.Serialization.serializationJson)
+    implementation(Deps.ArkIvanov.Decompose.decompose)
+    implementation(Deps.ArkIvanov.Decompose.extensionsAndroid)
+    implementation(Deps.Kmp.Util.onesignal)
+//    implementation(Deps.Kmp.Util.advancedWebView)
+//    implementation(Deps.Kmp.Util.landscapist)
+
 }
