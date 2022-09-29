@@ -1,10 +1,9 @@
 package aaa.bivizul.a33project.data.repository
 
 import aaa.bivizul.a33project.data.network.BetstratApi
-import aaa.bivizul.a33project.domain.util.betstratIoDispatcher
 import aaa.bivizul.a33project.domain.model.Betstrat
 import aaa.bivizul.a33project.domain.model.Betstratg
-import aaa.bivizul.a33project.domain.repository.BetstratRepository
+import aaa.bivizul.a33project.domain.util.betstratIoDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,7 +11,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class BetstratRepositoryImpl : BetstratRepository{
+class BetstratRepository {
 
     private val betstratApi = BetstratApi()
     private val betstratjob = SupervisorJob()

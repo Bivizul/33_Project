@@ -1,5 +1,10 @@
 package aaa.bivizul.a33project.android
 
+import aaa.bivizul.a33project.domain.util.checkBetstratnet
+import aaa.bivizul.a33project.domain.util.getBetstratdlg
+import aaa.bivizul.a33project.presentation.betstratwidget.Betstratibl
+import aaa.bivizul.a33project.presentation.root.RootComponent
+import aaa.bivizul.a33project.presentation.root.RootContent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,6 +20,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.arkivanov.decompose.defaultComponentContext
 
 @Composable
 fun MyApplicationTheme(
@@ -58,17 +64,24 @@ fun MyApplicationTheme(
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            MyApplicationTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-
-
-
+        if (checkBetstratnet(this)) {
+            val root = RootComponent(
+                componentContext = defaultComponentContext(),
+                context = this@MainActivity
+            )
+            setContent {
+                MyApplicationTheme {
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colors.background
+                    ) {
+                        Betstratibl()
+                        RootContent(rootModel = root)
+                    }
                 }
             }
+        } else {
+            getBetstratdlg(this)
         }
     }
 }

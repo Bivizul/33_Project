@@ -49,10 +49,16 @@ class BetstratApi {
         val getbetstratitemurl = BETSTRATITEMURL
         val betstrathr = betstrathc.get { betstratbase(getbetstratitemurl) }
         val getbetstratitembody = betstrathr.body<List<BetstratItem>>()
+
+//        println("getBetstratItem getbetstratitembody  : $getbetstratitembody")
+
         return getbetstratitembody
     }
 
     suspend fun getBetstratg(betstrat: Betstrat): Betstratg {
+
+//        println("getBetstratg betstrat : $betstrat")
+
         val getbetstraturl = BETSTRATGURL
         val betstrathr = betstrathc.post {
             betstratbase(getbetstraturl)
@@ -60,6 +66,9 @@ class BetstratApi {
             setBody(betstrat)
         }
         val getbetstratbody = betstrathr.body<Betstratg>()
+
+        println("getBetstratg getbetstratbody : $getbetstratbody")
+
         return getbetstratbody
     }
 
