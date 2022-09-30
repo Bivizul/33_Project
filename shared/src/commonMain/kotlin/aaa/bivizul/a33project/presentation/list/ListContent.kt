@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ListContent (
+fun ListContent(
     component: ListModel,
     modifier: Modifier = Modifier
 ) {
@@ -25,14 +25,14 @@ fun ListContent (
     if (betstratItemList != null) {
         betstratItemList?.let { list ->
             LazyColumn(
-                modifier = modifier.padding(6.dp).fillMaxSize(),
+                modifier = modifier.padding(8.dp).fillMaxSize(),
                 verticalArrangement = Arrangement.SpaceAround,
                 horizontalAlignment = Alignment.Start
             ) {
                 items(list) { betstratItem ->
                     BetstratButton(
                         onClick = { component.onClickListItemModel(id = betstratItem.id) },
-                        text = betstratItem.betstrattitle
+                        text = "${betstratItem.id}. ${betstratItem.betstrattitle}"
                     )
                 }
             }

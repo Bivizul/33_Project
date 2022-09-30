@@ -1,7 +1,8 @@
 package aaa.bivizul.a33project.presentation.betstratp
 
 import aaa.bivizul.a33project.domain.model.Betstratvar
-import aaa.bivizul.a33project.domain.util.getBetstratact
+import aaa.bivizul.a33project.domain.util.betstratct
+import aaa.bivizul.a33project.domain.util.getBetstratactoff
 import aaa.bivizul.a33project.domain.util.sigBetstratoff
 import aaa.bivizul.a33project.presentation.betstratwidget.Betstratcp
 import androidx.compose.runtime.Composable
@@ -30,11 +31,10 @@ fun BetstratpContent(
                 sigBetstratoff()
                 component.onReplace()
             } else {
-                getBetstratact(model.activity, it)
+                betstratct(model.activity, it)
+                getBetstratactoff(model.activity)
             }
         }
     }
-
     Betstratcp(modifier = modifier)
-
 }

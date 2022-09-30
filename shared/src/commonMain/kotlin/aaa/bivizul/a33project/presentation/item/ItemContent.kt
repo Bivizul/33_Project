@@ -32,7 +32,6 @@ fun ItemContent(
         betstratItemList?.let { list ->
             list[model.selectedBetstratItemId - 1].let { item ->
                 val betstratinList = item.betstratin
-//                val betstratimg = item.betstratimg
                 Column(
                     modifier = modifier
                         .verticalScroll(scrollState)
@@ -45,9 +44,6 @@ fun ItemContent(
                         text = item.betstrattitle,
                         style = MaterialTheme.typography.h5
                     )
-//                    if (betstratimg.isNotEmpty()) {
-//                        VirbetItemImage(betstratimg)
-//                    }
                     Text(
                         text = item.betstratdesc,
                         style = MaterialTheme.typography.body1

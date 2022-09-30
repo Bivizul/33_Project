@@ -8,7 +8,9 @@ import aaa.bivizul.a33project.presentation.root.RootContent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -29,28 +31,47 @@ fun MyApplicationTheme(
 ) {
     val colors = if (darkTheme) {
         darkColors(
-            primary = Color(0xFFBB86FC),
-            primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
+            primary = Color(0xB2966B00),
+            primaryVariant = Color(0x9F7C008A),
+            secondary = Color(0x9F8D0000),
+            onPrimary = Color(0xFFC2C2C2),
+            onBackground = Color(0xFFC2C2C2),
         )
     } else {
         lightColors(
-            primary = Color(0xFF6200EE),
-            primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
+            primary = Color(0xB2FFB700),
+            background = Color(0x9FE600FF),
+            secondary = Color(0x9FFF0000),
+            onPrimary = Color(0xFFFFFFFF),
+            onBackground = Color(0xFFFFFFFF),
         )
     }
     val typography = Typography(
+        h3 = TextStyle(
+            fontFamily = FontFamily.Default,
+            fontWeight = FontWeight.ExtraBold,
+            fontSize = 48.sp
+        ),
+        h5 = TextStyle(
+            fontFamily = FontFamily.Default,
+            fontWeight = FontWeight.Bold,
+            fontSize = 32.sp
+        ),
+        h6 = TextStyle(
+            fontFamily = FontFamily.Default,
+            fontWeight = FontWeight.Bold,
+            fontSize = 24.sp
+        ),
         body1 = TextStyle(
             fontFamily = FontFamily.Default,
             fontWeight = FontWeight.Normal,
-            fontSize = 16.sp
-        )
+            fontSize = 18.sp
+        ),
     )
     val shapes = Shapes(
-        small = RoundedCornerShape(4.dp),
-        medium = RoundedCornerShape(4.dp),
-        large = RoundedCornerShape(0.dp)
+        small = RoundedCornerShape(6.dp),
+        medium = RoundedCornerShape(8.dp),
+        large = RoundedCornerShape(10.dp)
     )
 
     MaterialTheme(
@@ -76,6 +97,11 @@ class MainActivity : ComponentActivity() {
                         color = MaterialTheme.colors.background
                     ) {
                         Betstratibl()
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(MaterialTheme.colors.background)
+                        )
                         RootContent(rootModel = root)
                     }
                 }

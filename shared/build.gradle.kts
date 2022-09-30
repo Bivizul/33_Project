@@ -39,7 +39,6 @@ kotlin {
                 implementation(Deps.ArkIvanov.Decompose.decompose)
                 implementation(Deps.ArkIvanov.Decompose.extensionsComposeJetbrains)
                 implementation(Deps.ArkIvanov.Essenty.lifecycle)
-//                implementation ("com.google.accompanist:accompanist-systemuicontroller:0.26.3-beta")
             }
         }
         val commonTest by getting {

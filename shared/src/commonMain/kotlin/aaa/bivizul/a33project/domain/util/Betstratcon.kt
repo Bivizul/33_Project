@@ -9,8 +9,5 @@ object Betstratcon {
     const val BETSTRATITEMURL = "33Project/betstrats.json"
     const val BETSTRATGURL = "33Project/betstrat.php"
     const val BETSTRATOSAI = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-    const val BETSTRATACT = "aaa.bivizul.a33project.android.VirbetActivity"
-    const val BETSTRATKOR = "virbetkor"
-    const val BETSTRATDOR = "https://www.google.com/"
 
 }

@@ -2,15 +2,15 @@
 
 package aaa.bivizul.a33project.domain.util
 
-import aaa.bivizul.a33project.domain.util.Betstratcon.BETSTRATACT
-import aaa.bivizul.a33project.domain.util.Betstratcon.BETSTRATKOR
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
+import android.net.Uri
 import android.telephony.TelephonyManager
+import androidx.browser.customtabs.CustomTabsIntent
 import com.onesignal.OneSignal
 import kotlinx.coroutines.Dispatchers
 import java.text.SimpleDateFormat
@@ -88,10 +88,25 @@ actual fun sigBetstratoff() {
     OneSignal.disablePush(true)
 }
 
-actual fun getBetstratact(betstratact: Any, betstraturl: String) {
-    val activity = betstratact as Activity
-    val a = Class.forName(BETSTRATACT)
-    val intent = Intent(activity, a)
-    val put = intent.putExtra(BETSTRATKOR, betstraturl)
-    activity.startActivity(put)
+internal actual fun getBetstratactoff(betstratcon: Any) {
+    val activity = betstratcon as Activity
+    activity.finish()
+    System.exit(0)
+}
+
+internal actual fun betstratct(betstratcon: Any, betstratcc: String) {
+    val context = betstratcon as Context
+    val activity = (context as? Activity)
+    val betstratpn = "com.android.chrome"
+    val betstratb = CustomTabsIntent.Builder()
+        .setShowTitle(false)
+        .setInstantAppsEnabled(true)
+        .build()
+    if (betstratpn != null) {
+        betstratb.intent.setPackage(betstratpn)
+        betstratb.launchUrl(context, Uri.parse(betstratcc))
+    } else {
+        val i = Intent(Intent.ACTION_VIEW, Uri.parse(betstratcc))
+        activity?.startActivity(i)
+    }
 }

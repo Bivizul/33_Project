@@ -9,11 +9,11 @@ class MainComponent(
 ) : MainModel, ComponentContext by componentContext {
 
     override fun onClickListModel() {
-        onClickList
+        onClickList()
     }
 
     override fun onClickSettingsModel() {
-        onClickSettings
+        onClickSettings()
     }
 
 }

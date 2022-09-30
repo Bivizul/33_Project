@@ -73,11 +73,9 @@ class RootComponent constructor(
         componentContext = componentContext,
         onClickList = {
             navigation.push(Config.ListConfig)
-            println("push onClickList")
         },
         onClickSettings = {
             navigation.push(Config.SettingsConfig)
-            println("push onClickSettings")
         }
     )
 

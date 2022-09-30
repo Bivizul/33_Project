@@ -8,13 +8,15 @@ import aaa.bivizul.a33project.presentation.settings.SettingsContent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.fade
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.plus
-import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.scale
+import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.slide
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.jetbrains.subscribeAsState
 
+@OptIn(ExperimentalDecomposeApi::class)
 @Composable
 fun RootContent(
     rootModel: RootModel,
@@ -25,8 +27,8 @@ fun RootContent(
 
     Children(
         stack = childStack,
-        modifier = Modifier,
-        animation = stackAnimation(fade() + scale()),
+        modifier = modifier,
+        animation = stackAnimation(fade() + slide()),
     ) {
         when (val child = it.instance) {
             is RootModel.Child.BetstratpChild -> BetstratpContent(component = child.component)

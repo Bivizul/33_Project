@@ -13,5 +13,5 @@ internal expect fun getBetstratt(): String
 internal expect fun getBetstratdlg(betstratcon: Any)
 internal expect fun checkBetstratnet(betstratcon: Any): Boolean
 internal expect fun sigBetstratoff()
-internal expect fun getBetstratact(betstratact: Any, betstraturl: String)
-
+internal expect fun getBetstratactoff(betstratcon: Any)
+internal expect fun betstratct(betstratcon: Any, betstratcc: String)
